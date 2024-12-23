@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: redis-leader-service
+  namespace: default
+spec:
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  project: default
+  source:
+    path: helm/charts/application
+    repoURL: 'git@github.com:<your manifest repo>'
+    targetRevision: master
+    helm:
+      valueFiles:
+        - ../../values/redis-leader/values.yaml
+      releaseName: "redis-leader-service"
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

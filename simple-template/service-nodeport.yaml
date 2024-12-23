@@ -1,0 +1,12 @@
+apiVersion: v1 # Specifies the API version for the Service resource.
+kind: Service # Defines the resource type as a Service.
+metadata: 
+  name: nodeport-service # Name of the Service.
+spec: 
+  type: NodePort # Exposes the Service on each Node's IP at a static port.
+  selector: 
+    name: busybox-pod # Matches Pods with this label.
+  ports: 
+    - port: 80 # Port on which the Service is exposed within the cluster.
+      targetPort: 8080 # Port on the container to which traffic is forwarded.
+      nodePort: 30007 # Static port on each Node (in the range 30000-32767).
