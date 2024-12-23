@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: minhkhoa0502/learning_repo
-  tag: b727f5e8030f3d01cb762d55e0d2e1de06dc95be
+  tag: fd2d443cff2867993ed2117cc8d5a7364cea46ef
 
 podLabels:
   app: foobar
