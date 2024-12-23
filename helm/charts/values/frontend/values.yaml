@@ -1,0 +1,22 @@
+replicaCount: 3
+
+image:
+  repository: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend
+  tag: "v5"
+
+podLabels:
+  app: guestbook
+  tier: frontend
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: lab05.200lab.example
+      paths:
+        - path: /
+          pathType: Prefix

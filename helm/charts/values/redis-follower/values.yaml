@@ -1,0 +1,15 @@
+replicaCount: 2
+
+image:
+  repository: us-docker.pkg.dev/google-samples/containers/gke/gb-redis-follower
+  tag: "v2"
+
+podLabels:
+  app: redis
+  role: follower
+  tier: backend
+
+service:
+  type: ClusterIP
+  port: 6379
+  targetPort: 6379

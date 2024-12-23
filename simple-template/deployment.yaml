@@ -1,0 +1,21 @@
+apiVersion: apps/v1 # Specifies the API version for the Deployment resource.
+kind: Deployment # Defines the resource type as a Deployment.
+metadata: 
+  name: deployment-demo # Name of the Deployment.
+spec: 
+  replicas: 2 # Number of pod replicas to maintain.
+  selector: # Defines how to identify Pods managed by this Deployment.
+    matchLabels: 
+      name: busybox-pod # Pods with this label will be managed by the Deployment.
+  template: # Describes the template for creating Pods.
+    metadata: 
+      labels: 
+        name: busybox-pod # Label applied to the created Pods.
+    spec: 
+      containers: # List of containers to run in each Pod.
+      - name: busybox-container # Name of the container.
+        image: busybox888 # Image to use for the container.
+        command: # Command to run inside the container.
+        - sh
+        - "-c"
+        - echo Hello Kubernetes! && sleep 3600
